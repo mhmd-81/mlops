@@ -45,6 +45,7 @@ def save_model(rf_clf, model_dir, X_sample=None):
     mlflow.sklearn.log_model(
         sk_model=rf_clf,
         artifact_path="model",
+        registered_model_name='iris_classifier',
         input_example=X_sample          
     )
     print('Model logged to MLflow!')
