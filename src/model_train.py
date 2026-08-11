@@ -47,7 +47,8 @@ with mlflow.start_run():
     # log model
     mlflow.sklearn.log_model(
         model,
-        'random_forest_model'
+        name= 'random_forest_model',
+        registered_model_name='random_forest_model_reg'
     )
 
 
