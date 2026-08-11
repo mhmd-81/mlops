@@ -4,7 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from dotenv import load_dotenv
 import os
-import joblib
+import mlflow 
+import mlflow.sklearn
+
+
+# mlflow configureation
+mlflow.set_tracking_uri('http://localhost:5000')
+mlflow.set_experiment('iris_classification')
+
 
 
 load_dotenv()
@@ -18,7 +25,34 @@ y = data['target']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42,test_size=0.2,shuffle=True)
 
-model = RandomForestClassifier(max_depth=2,random_state=42,verbose=1)
-model.fit(X_train,y_train)
+model = RandomForestClassifier(max_depth=2,random_state=42,n_estimators=100,verbose=1)
+with mlflow.start_run():
+    # train
+    model.fit(X_train,y_train)
+    # model eval
+    y_pred = model.predict(X_test)
 
-joblib.dump(model,'./models/rf-clf.joblib')
+    # metrics
+    accuracy = accuracy_score(y_test, y_pred)
+
+
+    # log params
+    mlflow.log_param('max_depth', 100)
+    mlflow.log_param('random_state' 42)
+    mlflow.log_param('n_estimators',100)
+
+    # log metrics
+    mlflow.log_metric('accuracy',accuracy)
+
+    # log model
+    mlflow.sklearn.log_model(
+        model,
+        'random_forest_model'
+    )
+
+
+
+
+
+
+
