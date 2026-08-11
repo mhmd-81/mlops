@@ -24,6 +24,10 @@ X = data.drop(columns=['target','target_name'],axis=0)
 y = data['target']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42,test_size=0.2,shuffle=True)
+# X_train.to_csv('./data/X_train.csv')
+# X_test.to_csv('./data/X_test.csv')
+# y_train.to_csv('./data/y_train.csv')
+# y_test.to_csv('./data/y_test.csv')
 
 model = RandomForestClassifier(max_depth=2,random_state=42,n_estimators=100,verbose=1)
 with mlflow.start_run():
