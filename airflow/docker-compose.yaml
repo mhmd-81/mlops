@@ -86,7 +86,6 @@ x-airflow-common:
     - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
     - ../src:/opt/airflow/src
     - ../data:/opt/airflow/data
-    - ../mlflow.db:/opt/airflow/mlflow.db    
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -194,6 +193,8 @@ services:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
+      mlflow:
+        condition: service_healthy
 
   airflow-triggerer:
     <<: *airflow-common
@@ -338,6 +339,37 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
+
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v3.15.1
+    container_name: mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      # These match your existing project layout (mlops/mlflow.db, mlops/mlartifacts),
+      # so history/artifacts from earlier `mlflow ui` runs on the host carry over.
+      - ../mlflow.db:/mlflow/mlflow.db
+      - ../mlartifacts:/mlflow/mlartifacts
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --artifacts-destination /mlflow/mlartifacts
+      --serve-artifacts
+      --allowed-hosts "mlflow:*,localhost:*,127.0.0.1:*"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health', timeout=5)"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: always
+    # No explicit "networks:" needed — this service and the airflow-* services
+    # share the compose file's default network, so airflow-worker can reach
+    # this container at http://mlflow:5000
+
 
 volumes:
   postgres-db-volume:

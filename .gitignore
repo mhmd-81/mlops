@@ -1,5 +1,49 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
 venv/
-__pycache__
-src/.env
+.venv/
+env/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Airflow
+# =========================
+airflow/logs/
+airflow/__pycache__/
+airflow/dags/__pycache__/
+
+# =========================
+# MLflow
+# =========================
 mlflow.db
+mlflow.db.*
 mlartifacts/
+mlartifacts.bak/
+mlartifacts.bak2/
+
+# =========================
+# OS / IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example

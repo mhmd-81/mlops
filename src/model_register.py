@@ -4,9 +4,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-mlflow.set_tracking_uri('http://localhost:5000')
-
-
+mlflow.set_tracking_uri("http://mlflow:5000")
 
 client = MlflowClient()
 model_name = os.getenv('MODEL_NAME')
