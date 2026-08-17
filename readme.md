@@ -1,0 +1,1 @@
+this file has been made to clear some parts of project and also note some important parts
