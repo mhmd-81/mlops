@@ -21,11 +21,10 @@ valid_outputs = {"setosa", "versicolor", "virginica"}
 min_row_count = 100
 
 numeric_ranges = {
-    "sepal_length": (0, 10),
-    "sepal_width": (0, 10),
-    "petal_length": (0, 10),
-    "petal_width": (0, 10),
-
+    "sepal length (cm)": (0, 10),
+    "sepal width (cm)": (0, 10),
+    "petal length (cm)": (0, 10),
+    "petal width (cm)": (0, 10),
 }
 
 @pytest.fixture(scope="module")
@@ -59,3 +58,21 @@ def test_expected_columns(data_existance):
             f"Column '{column}' expected dtype "
             f"{expected_dtype}, but got {actual_dtype}"
         )
+
+def test_valid_outputs(data_existance):
+        acutal_targets = set(data_existance['target_name'].unique())
+        assert valid_outputs == acutal_targets, (
+            f"target values must be {valid_outputs}"
+            f"but got {acutal_targets}"
+        )
+def test_feature_numeric_ranges(data_existance):
+    for column, (minimum,maximum) in numeric_ranges.items():
+          actual_min = data_existance[column].min()
+          actual_max = data_existance[column].max()
+    assert actual_min >= minimum, (
+         f"{column} has minimum value {actual_min}"
+    )
+    assert actual_max <= maximum, (
+            f"{column} has maximum value {actual_max}"
+
+    )
