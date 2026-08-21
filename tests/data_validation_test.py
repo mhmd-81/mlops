@@ -44,3 +44,9 @@ def test_expected_columns_check(data_existance):
 def test_unexpected_columns(data_existance):
     unexpected = set(data_existance.columns) - set(expected_columns)
     assert not unexpected, 'unexpected columns found'
+
+def test_min_row_count(data_existance):
+    assert len(data_existance) >= min_row_count, (
+        f"Expected at least {min_row_count} rows, "
+        f"but found {len(data_existance)}"
+    )
