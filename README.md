@@ -34,7 +34,8 @@
 
 ## 🧐 About <a name = "about"></a>
 
-this project started due to learn more about mlops and improving my skills,  
+this project started due to learn more about mlops and improving my skills, I hope this starts to make a
+path to professional coding.
 
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -43,29 +44,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
+the requirements are included in the requirements.txt file make sure to check them if there are conflicts on your system.
 
 ```
-Give examples
+mlflow
+scikit-learn
+pandas
+numpy
+
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
+change your dir to the airflow directory and run the docker compose file make sure you have stable internet connection
+to download packages feel free while docker is doing the job.
 
-Say what the step will be
 
-```
-Give the example
-```
 
-And repeat
+there will be a log directory which all models and codes logs will be written to it 
+you can check it by every run for errors.
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
