@@ -89,3 +89,7 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
+**by using command above you will be able to run codes sequentialy not the whole project**
+
+### Run the whole project 
+
