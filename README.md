@@ -1,9 +1,9 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="<img width="807" height="643" alt="Image" src="https://github.com/user-attachments/assets/4b821a82-dff8-4806-b7e7-0d6fe623952a" />" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center"> mlops pipeline </h3>
 
 <div align="center">
 
