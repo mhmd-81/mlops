@@ -76,3 +76,12 @@ def test_feature_numeric_ranges(data_existance):
             f"{column} has maximum value {actual_max}"
 
     )
+
+
+def test_no_miss_values(data_existance):
+     for column in expected_columns:
+          assert not data_existance[column].isna().any() >= 1, (
+               f'column {column} has null value'
+          )
+
+          
