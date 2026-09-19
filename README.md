@@ -1,12 +1,11 @@
 <p align="center">
   <img
-    width="200px"
-    height="200px"
-    src="https://imgur.com/GPmQ9cN"
-    alt="MLOps Pipeline Logo"
+    width="200"
+    height="200"
+    src="https://i.imgur.com/LcOx8t1.png"
+    alt="Project logo"
   >
 </p>
-
 <h1 align="center">MLOps Pipeline</h1>
 
 <p align="center">
