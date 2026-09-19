@@ -14,7 +14,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-active-success.svg" alt="Status">
-  <img src="https://img.shields.io/badge/Python-3.11-blue.svg" alt="Python">
+  <img src="https://img.shields.io/badge/Python-3.10-blue.svg" alt="Python">
   <img src="https://img.shields.io/badge/Docker-Compose-blue.svg" alt="Docker">
   <img src="https://img.shields.io/badge/Airflow-3.3.0-orange.svg" alt="Airflow">
   <img src="https://img.shields.io/badge/MLflow-tracking-blue.svg" alt="MLflow">
@@ -60,21 +60,22 @@ This project is mainly intended for learning and experimentation, with the goal 
 ## 📁 Project Structure
 
 ```text
-mlops/
-│
-├── airflow/
-│   ├── dags/
-│   │   └── model_training_dag.py
-│   │
-│   └── docker-compose.yaml
-│
-├── data/
-│   └── iris.csv
-│
-├── tests/
-│   └── ...
-│
+mlops
+├── airflow
+├── data
 ├── Dockerfile
-├── requirements.txt
+├── dockerfile.tests
+├── mlartifacts
 ├── mlflow.db
-└── README.md
+├── notebooks
+├── README.md
+├── requirements.txt
+├── src
+├── tests
+└── venv
+```
+
+---
+
+## Getting Started
+
