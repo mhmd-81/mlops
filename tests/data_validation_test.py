@@ -52,13 +52,19 @@ def test_min_row_count(data_existance):
 
 def test_expected_columns(data_existance):
     for column, expected_dtype in expected_columns.items():
-        actual_dtype =  str(data_existance[column].dtype)
+        actual_dtype = str(data_existance[column].dtype)
 
-        assert actual_dtype == expected_dtype, (
-            f"Column '{column}' expected dtype "
-            f"{expected_dtype}, but got {actual_dtype}"
-        )
-
+        if expected_dtype == "object":
+            assert actual_dtype in ["object", "str"], (
+                f"Column '{column}' expected dtype "
+                f"{expected_dtype}, but got {actual_dtype}"
+            )
+        else:
+            assert actual_dtype == expected_dtype, (
+                f"Column '{column}' expected dtype "
+                f"{expected_dtype}, but got {actual_dtype}"
+            )
+            
 def test_valid_outputs(data_existance):
         acutal_targets = set(data_existance['target_name'].unique())
         assert valid_outputs == acutal_targets, (
@@ -67,12 +73,12 @@ def test_valid_outputs(data_existance):
         )
 def test_feature_numeric_ranges(data_existance):
     for column, (minimum,maximum) in numeric_ranges.items():
-          actual_min = data_existance[column].min()
-          actual_max = data_existance[column].max()
-    assert actual_min >= minimum, (
+        actual_min = data_existance[column].min()
+        actual_max = data_existance[column].max()
+        assert actual_min >= minimum, (
          f"{column} has minimum value {actual_min}"
     )
-    assert actual_max <= maximum, (
+        assert actual_max <= maximum, (
             f"{column} has maximum value {actual_max}"
 
     )
