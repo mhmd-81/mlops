@@ -30,3 +30,7 @@ jobs:
         - name: run tests
           run: |
             pytest tests/
+
+        - name: python version
+          run: |
+            python --version
