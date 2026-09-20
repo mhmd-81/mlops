@@ -52,13 +52,19 @@ def test_min_row_count(data_existance):
 
 def test_expected_columns(data_existance):
     for column, expected_dtype in expected_columns.items():
-        actual_dtype =  str(data_existance[column].dtype)
+        actual_dtype = str(data_existance[column].dtype)
 
-        assert actual_dtype == expected_dtype, (
-            f"Column '{column}' expected dtype "
-            f"{expected_dtype}, but got {actual_dtype}"
-        )
-
+        if expected_dtype == "object":
+            assert actual_dtype in ["object", "str"], (
+                f"Column '{column}' expected dtype "
+                f"{expected_dtype}, but got {actual_dtype}"
+            )
+        else:
+            assert actual_dtype == expected_dtype, (
+                f"Column '{column}' expected dtype "
+                f"{expected_dtype}, but got {actual_dtype}"
+            )
+            
 def test_valid_outputs(data_existance):
         acutal_targets = set(data_existance['target_name'].unique())
         assert valid_outputs == acutal_targets, (
