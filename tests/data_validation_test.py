@@ -67,12 +67,12 @@ def test_valid_outputs(data_existance):
         )
 def test_feature_numeric_ranges(data_existance):
     for column, (minimum,maximum) in numeric_ranges.items():
-          actual_min = data_existance[column].min()
-          actual_max = data_existance[column].max()
-    assert actual_min >= minimum, (
+        actual_min = data_existance[column].min()
+        actual_max = data_existance[column].max()
+        assert actual_min >= minimum, (
          f"{column} has minimum value {actual_min}"
     )
-    assert actual_max <= maximum, (
+        assert actual_max <= maximum, (
             f"{column} has maximum value {actual_max}"
 
     )
