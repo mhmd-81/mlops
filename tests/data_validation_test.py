@@ -1,8 +1,7 @@
+from pathlib import Path
+
 import pandas as pd
 import pytest
-from dotenv import load_dotenv
-import os
-from pathlib import Path
 
 data_path = Path(__file__).parent.parent/"data"/"iris.csv"
 

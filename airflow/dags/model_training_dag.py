@@ -1,8 +1,7 @@
 import pendulum
-from airflow import DAG
 from airflow.operators.bash import BashOperator
 
-
+from airflow import DAG
 
 with DAG(
     dag_id = 'model_training',

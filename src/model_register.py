@@ -1,7 +1,8 @@
-import mlflow
-from mlflow import MlflowClient
-from dotenv import load_dotenv
 import os
+
+import mlflow
+from dotenv import load_dotenv
+from mlflow import MlflowClient
 
 load_dotenv()
 mlflow.set_tracking_uri("http://mlflow:5000")
