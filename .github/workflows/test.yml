@@ -41,6 +41,9 @@ jobs:
           with:
             files: result.xml
             
-        - name: ruff check
+        - name: ruff check 
           run: |
-            ruff check .
+            ruff check . 
+        
+        - name: docker image build
+          run: docker build -t mlops-proj .
