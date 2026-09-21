@@ -41,3 +41,6 @@ jobs:
           with:
             files: result.xml
             
+        - name: ruff check
+          run: |
+            ruff check .
