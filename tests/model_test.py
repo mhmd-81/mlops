@@ -1,8 +1,8 @@
-from sklearn.ensemble import RandomForestClassifier
-import pandas as pd 
-from pathlib import Path
-from dotenv import load_dotenv
 import os
+from pathlib import Path
+
+import pandas as pd
+from dotenv import load_dotenv
 
 base_dir = Path(__file__).parent.parent
 env_dir = base_dir / 'src' / '.env'
