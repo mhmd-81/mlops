@@ -33,7 +33,7 @@ jobs:
             
         - name: run tests
           env:
-            DATA_PATH : 'data/iris.csv'
+            TEST_DATA_PATH : 'data/iris.csv'
           run: |
             pytest tests/ --junitxml=result.xml
 
