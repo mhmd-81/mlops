@@ -41,7 +41,7 @@ with mlflow.start_run():
 
 
     # log params
-    mlflow.log_param('max_depth', 100)
+    mlflow.log_param('max_depth', 2)
     mlflow.log_param('random_state', 42)
     mlflow.log_param('n_estimators',100)
 

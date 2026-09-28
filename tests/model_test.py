@@ -10,3 +10,4 @@ load_dotenv(env_dir)
 data_path = os.getenv("TEST_DATA_PATH")
 
 data = pd.read_csv(data_path)
+model_path = os.getenv('random_forest_model_reg')
