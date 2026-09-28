@@ -93,3 +93,5 @@ pip install -r requirements.txt
 
 ### Run the whole project 
 follow instructions below
+
+#### installationS
