@@ -20,7 +20,7 @@ data_path = os.getenv("DATA_PATH")
 
 data = pd.read_csv(data_path)
 
-X = data.drop(columns=['target','target_name'],axis=0)
+X = data.drop(columns=['target','target_name'])
 y = data['target']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=42,test_size=0.2,shuffle=True)
