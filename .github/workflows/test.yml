@@ -31,11 +31,15 @@ jobs:
             pip install -r requirements.txt
             
             
-        - name: run tests
+        - name: run data tests
           env:
             TEST_DATA_PATH : 'data/iris.csv'
           run: |
-            pytest tests/ --junitxml=result.xml
+            pytest tests/data_validation_test.py --junitxml=result.xml
+        
+        - name: run model tests
+          run: 
+            pytest tests/model_test.py
 
         - name: publish test results
           uses: EnricoMi/publish-unit-test-result-action@v2
