@@ -55,3 +55,7 @@ jobs:
         - name: validate docker compose
           run: |
              docker compose -f airflow/docker-compose.yaml config
+
+        - name: run docker container
+          run: |
+             docker compose -f airflow/docker-compose.yaml up -d
