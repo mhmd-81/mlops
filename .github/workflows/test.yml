@@ -50,3 +50,8 @@ jobs:
         
         - name: docker image build
           run: docker build -t mlops-proj .
+        
+
+        - name: validate docker compose
+          run: |
+             docker compose -f airflow/docker-compose.yaml config
