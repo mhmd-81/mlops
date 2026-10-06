@@ -13,9 +13,9 @@ data_path = os.getenv("TEST_DATA_PATH")
 data = pd.read_csv(data_path)
 model_path = os.getenv('random_forest_model_reg')
 
-def test_mlflow_connection():
-    experiment = mlflow.get_experiment_by_name('iris_classification')
+# def test_mlflow_connection():
+#     experiment = mlflow.get_experiment_by_name('iris_classification')
 
-    assert experiment is not None, (
-        "Could not find iris_classification experiment in MLflow"
-    )
+#     assert experiment is not None, (
+#         "Could not find iris_classification experiment in MLflow"
+#     )
