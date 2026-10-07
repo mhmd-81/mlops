@@ -59,3 +59,7 @@ jobs:
         - name: run docker container
           run: |
              docker compose -f airflow/docker-compose.yaml up -d
+
+        - name: check docker containers
+          run: |
+            docker compose -f airflow/docker-compose.yaml ps
