@@ -346,17 +346,23 @@ services:
     container_name: mlflow
     ports:
       - "5000:5000"
+    # Run as root so SQLite can create/write mlflow.db on bind mounts
+    # (CI runners and fresh checkouts often have different file ownership).
+    user: "0:0"
     volumes:
-      # These match your existing project layout (mlops/mlflow.db, mlops/mlartifacts),
-      # so history/artifacts from earlier `mlflow ui` runs on the host carry over.
-      - ../mlflow.db:/mlflow/mlflow.db
-      - ../mlartifacts:/mlflow/mlartifacts
+      # Mount the project directory (mlops/) rather than individual files.
+      # A missing single-file bind mount (e.g. gitignored mlflow.db) makes Docker
+      # create a DIRECTORY at that path, which breaks SQLite. A directory mount
+      # always exists, and MLflow creates mlflow.db / mlartifacts inside it if absent.
+      # Locally this still picks up mlops/mlflow.db and mlops/mlartifacts, so
+      # history from earlier `mlflow ui` runs carries over.
+      - ..:/mlflow-data
     command: >
       mlflow server
       --host 0.0.0.0
       --port 5000
-      --backend-store-uri sqlite:////mlflow/mlflow.db
-      --artifacts-destination /mlflow/mlartifacts
+      --backend-store-uri sqlite:////mlflow-data/mlflow.db
+      --artifacts-destination /mlflow-data/mlartifacts
       --serve-artifacts
       --allowed-hosts "mlflow:*,localhost:*,127.0.0.1:*"
     healthcheck:
