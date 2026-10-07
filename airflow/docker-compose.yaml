@@ -361,10 +361,10 @@ services:
       --allowed-hosts "mlflow:*,localhost:*,127.0.0.1:*"
     healthcheck:
       test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health', timeout=5)"]
-      interval: 15s
+      interval: 10s
       timeout: 10s
-      retries: 5
-      start_period: 30s
+      retries: 10
+      start_period: 60s
     restart: always
     # No explicit "networks:" needed — this service and the airflow-* services
     # share the compose file's default network, so airflow-worker can reach
