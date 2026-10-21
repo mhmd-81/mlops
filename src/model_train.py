@@ -52,7 +52,8 @@ with mlflow.start_run():
     mlflow.sklearn.log_model(
         model,
         name= 'random_forest_model',
-        registered_model_name='random_forest_model_reg'
+        registered_model_name='random_forest_model_reg',
+        serialization_format='pickle'
     )
 
 
