@@ -1,6 +1,6 @@
-from fastapi import FastAPI
 import mlflow
 import mlflow.pyfunc
+from fastapi import FastAPI
 
 app = FastAPI(title='iris_model')
 mlflow.set_tracking_uri("http://localhost:5000")
