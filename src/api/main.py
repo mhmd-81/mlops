@@ -1,6 +1,14 @@
 from fastapi import FastAPI
+import mlflow
+import mlflow.pyfunc
 
 app = FastAPI(title='iris_model')
+mlflow.set_tracking_uri("http://localhost:5000")
+
+
+model = mlflow.pyfunc.load_model(
+    "models:/random_forest_model_reg/1"
+)
 
 @app.get('/health')
 def health_check():
@@ -10,6 +18,6 @@ def health_check():
 def home():
     return{'message':'welcome to iris app'}
 
-@app.post('/hello')
-def say_hello(name:str,age:int):
-    return {"message":f"hello {name} who is {age} years old"}
+# @app.post('/prediction')
+# def model_prediction():
+

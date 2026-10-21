@@ -1,7 +1,9 @@
 FROM python:3.11-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt 
+RUN pip install --no-cache-dir \
+-i export PIP_INDEX_URL=https://package-mirror.liara.ir/repository/pypi/simple \
+-r requirements.txt 
 COPY tests/ ./tests/
 COPY data/ ./data
 
