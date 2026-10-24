@@ -2,7 +2,7 @@
   <img
     width="200"
     height="200"
-    src="https://i.imgur.com/LcOx8t1.png"
+    src="https://i.imgur.com/x6PmOBE.jpeg"
     alt="Project logo"
   >
 </p>
